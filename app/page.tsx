@@ -1,101 +1,128 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import { useState } from "react"
+import { Layout } from "@/components/layout"
+import { ProgressCard } from "@/components/progress-card"
+import { DataTable } from "@/components/data-table"
+import { LeadModal } from "@/components/lead-modal"
+import { FilterDialog } from "@/components/filter-dialog"
+import { Button } from "@/components/ui/button"
+import { ChevronDown, Filter, Plus, RefreshCcw } from 'lucide-react'
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+interface Lead {
+  name: string
+  topic: string
+  status: string
+  createdOn: string
 }
+
+const columns = [
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "topic",
+    header: "Topic",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    accessorKey: "createdOn",
+    header: "Created on",
+  },
+]
+
+const initialData: Lead[] = [
+  {
+    name: "Winford Asher",
+    topic: "Cafe A100 for commercial use",
+    status: "New",
+    createdOn: "2024-04-02",
+  },
+  {
+    name: "Josia Love",
+    topic: "Upgrading service plan",
+    status: "New",
+    createdOn: "2024-03-30",
+  },
+  {
+    name: "Harrison Curtis",
+    topic: "Issue with throughput on EspressoMaster",
+    status: "In Progress",
+    createdOn: "2024-03-28",
+  },
+  {
+    name: "Jermaine Berrett",
+    topic: "New roaster in distribution facility",
+    status: "Closed",
+    createdOn: "2024-03-25",
+  },
+  {
+    name: "Gerald Stephens",
+    topic: "Concerns on current machines",
+    status: "New",
+    createdOn: "2024-03-23",
+  },
+]
+
+export default function Page() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [filterDialogOpen, setFilterDialogOpen] = useState(false)
+  const [data, setData] = useState<Lead[]>(initialData)
+
+  const applyFilter = (filters: {
+    name: string
+    topic: string
+    status: string
+    createdAfter: string
+  }) => {
+    const filteredData = initialData.filter((lead) => {
+      return (
+        (filters.name ? lead.name.toLowerCase().includes(filters.name.toLowerCase()) : true) &&
+        (filters.topic ? lead.topic.toLowerCase().includes(filters.topic.toLowerCase()) : true) &&
+        (filters.status ? lead.status.toLowerCase() === filters.status.toLowerCase() : true) &&
+        (filters.createdAfter ? new Date(lead.createdOn) >= new Date(filters.createdAfter) : true)
+      )
+    })
+    setData(filteredData)
+  }
+
+  return (
+    <Layout>
+      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex items-center gap-4">
+          <h1 className="text-2xl font-semibold">My open leads</h1>
+          <ChevronDown className="h-5 w-5" />
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <Button variant="outline" size="sm" onClick={() => setFilterDialogOpen(true)}>
+            <Filter className="mr-2 h-4 w-4" />
+            Filter
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => setData(initialData)}>
+            <RefreshCcw className="mr-2 h-4 w-4" />
+            Refresh
+          </Button>
+          <Button size="sm">
+            <Plus className="mr-2 h-4 w-4" />
+            New
+          </Button>
+        </div>
+      </div>
+      <ProgressCard />
+      <div className="mt-8">
+        <DataTable columns={columns} data={data} />
+      </div>
+      
+      <FilterDialog
+        open={filterDialogOpen}
+        onClose={() => setFilterDialogOpen(false)}
+        onApplyFilter={applyFilter}
+      />
+    </Layout>
+  )
+}
+
