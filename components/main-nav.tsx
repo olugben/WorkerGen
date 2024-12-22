@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Bell, HelpCircle, Menu, Plus, Settings } from 'lucide-react'
+import { Bell, HelpCircle, Menu, Settings } from 'lucide-react'
 
 import { Button } from "@/components/ui/button"
 
