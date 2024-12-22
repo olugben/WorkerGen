@@ -59,7 +59,7 @@ export function LeadModal({ open, onClose }: LeadModalProps) {
               <Edit className="mr-2 h-4 w-4" />
               Edit
             </Button>
-            <Button size="sm" className="bg-blue-600 text-white hover:bg-blue-700">Approve and send</Button>
+            <Button size="sm" className="bg-blue-600 text-white hover:bg-blue-700">Approve</Button>
           </div>
         </div>
       </div>
