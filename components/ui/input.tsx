@@ -6,6 +6,7 @@ type InputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className: string
+  id?:string
 };
 
 export const Input: React.FC<InputProps> = ({ type, placeholder, value, onChange , className}) => {

@@ -7,13 +7,14 @@ type SelectProps = {
 };
 
 type SelectTriggerProps = {
-  value: string;
+  value?: string;
   children: React.ReactNode;
+  className:string
 };
 
 type SelectContentProps = {
-  onChange: (value: string) => void;
-  children: React.ReactNode;
+  onChange?: (value: string) => void;
+  children?: React.ReactNode;
 };
 
 type SelectItemProps = {

@@ -2,8 +2,9 @@ import React, { ReactNode } from 'react';
 
 type DialogProps = {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: ReactNode;
+  onOpenChange:()=>void;
 };
 
 export const Dialog: React.FC<DialogProps> = ({ open, onClose, children }) => {
@@ -64,6 +65,7 @@ export const Dialog: React.FC<DialogProps> = ({ open, onClose, children }) => {
 
 type DialogContentProps = {
   children: ReactNode;
+  className?:string
 };
 
 export const DialogContent: React.FC<DialogContentProps> = ({ children }) => {
@@ -72,6 +74,7 @@ export const DialogContent: React.FC<DialogContentProps> = ({ children }) => {
 
 type DialogHeaderProps = {
   children: ReactNode;
+  className?:string
 };
 
 export const DialogHeader: React.FC<DialogHeaderProps> = ({ children }) => {
@@ -80,6 +83,7 @@ export const DialogHeader: React.FC<DialogHeaderProps> = ({ children }) => {
 
 type DialogTitleProps = {
   children: ReactNode;
+  className?:string
 };
 
 export const DialogTitle: React.FC<DialogTitleProps> = ({ children }) => {
@@ -88,6 +92,7 @@ export const DialogTitle: React.FC<DialogTitleProps> = ({ children }) => {
 
 type DialogFooterProps = {
   children: ReactNode;
+  className?:string
 };
 
 export const DialogFooter: React.FC<DialogFooterProps> = ({ children }) => {

@@ -55,21 +55,29 @@ const initialData: Lead[] = [
     createdOn: "2024-03-28",
   },
   {
-    name: "Jermaine Berrett",
-    topic: "New roaster in distribution facility",
-    status: "Closed",
-    createdOn: "2024-03-25",
+    name: "Winford Asher",
+    topic: "Cafe A100 for commercial use",
+    status: "New",
+    createdOn: "2024-04-02",
   },
   {
-    name: "Gerald Stephens",
-    topic: "Concerns on current machines",
+    name: "Josia Love",
+    topic: "Upgrading service plan",
     status: "New",
-    createdOn: "2024-03-23",
+    createdOn: "2024-03-30",
   },
+  {
+    name: "Harrison Curtis",
+    topic: "Issue with throughput on EspressoMaster",
+    status: "In Progress",
+    createdOn: "2024-03-28",
+  },
+ 
+
 ]
 
 export default function Page() {
-  const [modalOpen, setModalOpen] = useState(false)
+
   const [filterDialogOpen, setFilterDialogOpen] = useState(false)
   const [data, setData] = useState<Lead[]>(initialData)
 
@@ -92,7 +100,7 @@ export default function Page() {
 
   return (
     <Layout>
-      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="mb-8 flex  flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-4">
           <h1 className="text-2xl font-semibold">My open leads</h1>
           <ChevronDown className="h-5 w-5" />
@@ -103,6 +111,16 @@ export default function Page() {
             Filter
           </Button>
           <Button variant="outline" size="sm" onClick={() => setData(initialData)}>
+              <RefreshCcw className="mr-2 h-4 w-4" />
+              Refresh
+            </Button>
+            <Button variant="outline" size="sm">
+              Collaborate
+            </Button>
+            <Button variant="outline" size="sm">
+              Delete
+            </Button>
+          <Button variant="outline" size="sm" onClick={() => setData(initialData)}>
             <RefreshCcw className="mr-2 h-4 w-4" />
             Refresh
           </Button>
@@ -110,9 +128,14 @@ export default function Page() {
             <Plus className="mr-2 h-4 w-4" />
             New
           </Button>
+
         </div>
       </div>
-      <ProgressCard />
+      <div className="shadow-2xl rounded-lg p-6 space-y-4">
+  <ProgressCard />
+</div>
+
+    
       <div className="mt-8">
         <DataTable columns={columns} data={data} />
       </div>
@@ -125,4 +148,3 @@ export default function Page() {
     </Layout>
   )
 }
-
