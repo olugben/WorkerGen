@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Layout } from "@/components/layout"
 import { ProgressCard } from "@/components/progress-card"
 import { DataTable } from "@/components/data-table"
-import { LeadModal } from "@/components/lead-modal"
+
 import { FilterDialog } from "@/components/filter-dialog"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, Filter, Plus, RefreshCcw } from 'lucide-react'

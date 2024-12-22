@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { X, Edit, ChevronRight } from 'lucide-react'
+import { X, Edit} from 'lucide-react'
 import Image from "next/image"
 
 interface LeadModalProps {
