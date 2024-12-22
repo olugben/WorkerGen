@@ -83,26 +83,8 @@ export function LeadModal({ open, onClose }: LeadModalProps) {
         </div>
       </div>
 
-      {/* Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {[
-          { label: "Decision maker", value: "Yes", color: "green" },
-          { label: "Potential deal value", value: "$1M", color: "yellow" },
-          { label: "Intent", value: "High", color: "blue" }
-        ].map(({ label, value, color }) => (
-          <div key={label} className="rounded-lg border p-4 shadow-sm bg-white">
-            <div className="mb-2 text-sm text-gray-500">{label}</div>
-            <div className="flex items-center gap-2 text-base font-semibold text-gray-800">
-              <div
-                className={`rounded-full p-2 bg-${color}-100`}
-              >
-                <ChevronRight className={`h-5 w-5 text-${color}-600`} />
-              </div>
-              {value}
-            </div>
-          </div>
-        ))}
-      </div>
+   
+    
     </div>
   </DialogContent>
 </Dialog>

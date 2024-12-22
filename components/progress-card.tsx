@@ -4,10 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { LeadCard } from "./ui/lead-card";
 import { LeadModal } from "./lead-modal";
+import { LLeadModal } from "./llead-modal";
 import { useState } from "react";
 export function ProgressCard() {
   const [modalOpen, setModalOpen] = useState(false);
-
+  const [modalOpenn, setModalOpenn] = useState(false);
   return (
     <Card className="w-full overflow-hidden bg-gradient-to-b from-blue-50 to-white shadow-lg">
       <CardContent className="p-6">
@@ -41,7 +42,9 @@ export function ProgressCard() {
                 tags={["Expand business", "High buying intent"]}
               />
             </div>
-            <div className="shadow-2xl rounded-lg p-2 space-y-3">
+            <div className="shadow-2xl rounded-lg p-2 space-y-3"
+             onClick={() => setModalOpenn(true)}
+            >
               <LeadCard
                 name="Allan Munger"
                 company="Head of Real Estate Development • Contoso Coffee"
@@ -55,6 +58,7 @@ export function ProgressCard() {
         </div>
       </CardContent>
       <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <LLeadModal open={modalOpenn} onClose={() => setModalOpenn(false)} />
     </Card>
   );
 }
