@@ -10,8 +10,8 @@ export function ProgressCard() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalOpenn, setModalOpenn] = useState(false);
   return (
-    <Card className="w-full overflow-hidden bg-gradient-to-b from-blue-50 to-white shadow-lg">
-      <CardContent className="p-6">
+    <Card >
+      <CardContent>
         <div className="flex flex-col space-y-4 style={{ boxShadow: '0 -10px 20px rgba(0, 0, 0, 0.25)' }}">
           <div className="flex flex-col space-y-2 sm:flex-row sm:justify-between sm:space-y-0">
             <h2 className=" font-semibold">

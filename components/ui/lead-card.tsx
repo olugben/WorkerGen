@@ -15,8 +15,8 @@ interface LeadCardProps {
 
 export function LeadCard({ name, company, imageUrl, action, description, tags }: LeadCardProps) {
   return (
-    <Card className="w-full overflow-hidden bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 ease-in-out hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-      <CardContent className="p-4">
+    <Card >
+      <CardContent >
         <div className="flex items-center space-x-4">
           <Image
             src={imageUrl}
