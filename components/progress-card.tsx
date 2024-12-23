@@ -8,7 +8,7 @@ import { LeadModal } from "./lead-modal";
 import { useState } from "react";
 export function ProgressCard() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalOpenn, setModalOpenn] = useState(false);
+
   return (
     <Card >
       <CardContent>
@@ -43,7 +43,7 @@ export function ProgressCard() {
               />
             </div>
             <div className="shadow-2xl rounded-lg p-2 space-y-3 "
-             onClick={() => setModalOpenn(true)}
+            
             >
               <LeadCard
                 name="Allan Munger"
