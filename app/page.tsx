@@ -131,20 +131,24 @@ export default function Page() {
 
         </div>
       </div>
-      <div className="shadow-2xl rounded-lg p-6 space-y-4">
+      <div className="  shadow-2xl rounded-lg p-6 space-y-4">
   <ProgressCard />
+  
+</div>
+
+  
+<div className="mt-8">
+  
+  <DataTable columns={columns} data={data} />
 </div>
 
     
-      <div className="mt-8">
-        <DataTable columns={columns} data={data} />
-      </div>
-      
-      <FilterDialog
+      <FilterDialog 
         open={filterDialogOpen}
         onClose={() => setFilterDialogOpen(false)}
         onApplyFilter={applyFilter}
       />
+      
     </Layout>
   )
 }

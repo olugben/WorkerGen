@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { LeadCard } from "./ui/lead-card";
 import { LeadModal } from "./lead-modal";
-import { LLeadModal } from "./llead-modal";
+
 import { useState } from "react";
 export function ProgressCard() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -42,7 +42,7 @@ export function ProgressCard() {
                 tags={["Expand business", "High buying intent"]}
               />
             </div>
-            <div className="shadow-2xl rounded-lg p-2 space-y-3"
+            <div className="shadow-2xl rounded-lg p-2 space-y-3 "
              onClick={() => setModalOpenn(true)}
             >
               <LeadCard
@@ -58,7 +58,8 @@ export function ProgressCard() {
         </div>
       </CardContent>
       <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} />
-      <LLeadModal open={modalOpenn} onClose={() => setModalOpenn(false)} />
+
+     
     </Card>
   );
 }
