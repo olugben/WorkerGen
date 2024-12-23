@@ -32,7 +32,7 @@ export function LeadModal({ open, onClose }: LeadModalProps) {
             <p className="text-sm text-gray-500">COO • Northwind Traders</p>
           </div>
         </div>
-        {/* Close Button */}
+        
         <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-gray-400 hover:text-gray-800" onClick={onClose}>
           <X className="h-5 w-5" />
         </Button>
