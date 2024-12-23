@@ -16,7 +16,7 @@ export function LeadModal({ open, onClose }: LeadModalProps) {
   <DialogContent className="max-w-3xl p-6 md:p-8 bg-gradient-to-br from-white to-slate-50 shadow-lg rounded-lg">
     <DialogHeader className="mb-6">
       <div className="flex items-start justify-between">
-        {/* Profile Info */}
+       
         <div className="flex gap-4">
           <div className="relative h-12 w-12">
             <Image
@@ -42,7 +42,7 @@ export function LeadModal({ open, onClose }: LeadModalProps) {
     {/* Main Content */}
     <div className="mt-6 space-y-6">
       {/* Lead Info */}
-      <div className="rounded-lg border bg-white p-4 shadow-sm">
+     <div className="rounded-lg border bg-white p-4 shadow-sm">
         <div className="flex items-start justify-between">
           <div className="space-y-2">
             <p className="text-sm text-gray-700">
