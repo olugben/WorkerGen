@@ -55,11 +55,7 @@ export function LLeadModal({ open, onClose }: LeadModalProps) {
                 </div>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50">
-                  <Edit className="mr-2 h-4 w-4" />
-                  Edit
-                </Button>
-                <Button size="sm">Approve</Button>
+              <Button size="sm" className="bg-blue-600 text-white hover:bg-blue-700">Approve</Button>
               </div>
             </div>
           </div>
